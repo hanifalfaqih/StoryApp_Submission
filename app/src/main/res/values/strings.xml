@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Storygram</string>
+    <string name="text_hint_enter_password">Enter your password</string>
+    <string name="text_register">Sign Up</string>
+    <string name="text_hint_enter_email">Enter your email</string>
+    <string name="text_hint_enter_name">Enter your name</string>
+    <string name="text_to_login">Join us before? <font color='#FF672C'><b>Login</b></font></string>
+    <string name="button_register">Register</string>
+    <string name="button_login">Login</string>
+    <string name="text_to_register">Dont have account yet? <font color='#FF672C'><b>Register</b></font></string>
+    <string name="button_intent_camera">Camera</string>
+    <string name="button_intent_gallery">Gallery</string>
+    <string name="text_story_description">Add your story description</string>
+    <string name="text_description">Description</string>
+    <string name="text_username">Username</string>
+    <string name="menu_logout">Logout</string>
+    <string name="text_password_error">Password must more than 6 character</string>
+    <string name="text_email_error">Email format not valid</string>
+    <string name="text_name_error">Must be filled</string>
+    <string name="button_upload_story">Upload Story</string>
+    <string name="title_add_story">Add Story</string>
+    <string name="text_choose_picture">Choose a picture</string>
+</resources>
