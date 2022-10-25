@@ -38,8 +38,6 @@ class AddStoryActivity : BaseActivity<ActivityAddStoryBinding, AddStoryViewModel
 
     private lateinit var currentPhotoPath: String
     private var getFile: File? = null
-    private var description: RequestBody? = null
-    private var imageMultipart: MultipartBody.Part? = null
 
     companion object {
         private val REQUIRED_PERMISSION = arrayOf(Manifest.permission.CAMERA)
@@ -88,22 +86,23 @@ class AddStoryActivity : BaseActivity<ActivityAddStoryBinding, AddStoryViewModel
         getViewBinding().btnIntentCamera.setOnClickListener { intentCamera() }
         getViewBinding().btnIntentGallery.setOnClickListener { intentGallery() }
         getViewBinding().btnUploadStory.setOnClickListener {
-            getViewModel().postUploadStory(imageMultipart, description)
+            uploadPhoto()
         }
     }
 
-
     override fun uploadPhoto() {
-        if (getFile != null && description != null) {
+        if (getFile != null ) {
             val file = reduceFileImage(getFile as File)
-            description = getViewBinding().etDescriptionStory.text.toString()
+            val description = getViewBinding().etDescriptionStory.text.toString()
                 .toRequestBody("text/plain".toMediaType())
-            val requestImageFile = file.asRequestBody("image/".toMediaTypeOrNull())
-            imageMultipart = MultipartBody.Part.createFormData(
+            val requestImageFile = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
+
+            val imageMultipart = MultipartBody.Part.createFormData(
                 "photo",
                 file.name,
                 requestImageFile
             )
+            getViewModel().postUploadStory(imageMultipart, description)
         }
     }
 
