@@ -8,6 +8,8 @@ import dagger.hilt.android.scopes.ActivityScoped
 import id.allana.storyapp_submission.base.arch.GenericViewModelFactory
 import id.allana.storyapp_submission.ui.addstory.AddStoryRepository
 import id.allana.storyapp_submission.ui.addstory.AddStoryViewModel
+import id.allana.storyapp_submission.ui.detailstory.DetailStoryRepository
+import id.allana.storyapp_submission.ui.detailstory.DetailStoryViewModel
 import id.allana.storyapp_submission.ui.liststory.ListStoryRepository
 import id.allana.storyapp_submission.ui.liststory.ListStoryViewModel
 import id.allana.storyapp_submission.ui.login.LoginRepository
@@ -49,6 +51,12 @@ object ViewModelModule {
     @ActivityScoped
     fun provideSplashScreenViewModel(splashScreenRepository: SplashScreenRepository): SplashScreenViewModel {
         return GenericViewModelFactory(SplashScreenViewModel(splashScreenRepository)).create(SplashScreenViewModel::class.java)
+    }
+
+    @Provides
+    @ActivityScoped
+    fun provideDetailStoryViewModel(detailStoryRepository: DetailStoryRepository): DetailStoryViewModel {
+        return GenericViewModelFactory(DetailStoryViewModel(detailStoryRepository)).create(DetailStoryViewModel::class.java)
     }
 
 }
