@@ -33,9 +33,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:fontFamily="@font/roboto_regular"
-                android:text="@string/text_username"
+                android:text="@string/text_upload_date"
                 android:textColor="@color/font_black_color"
-                android:textSize="@dimen/_6ssp"
+                android:textSize="@dimen/_12ssp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
                 />
 
             <TextView
@@ -46,7 +48,9 @@
                 android:fontFamily="@font/roboto_bold"
                 android:text="@string/text_username"
                 android:textColor="@color/font_black_color"
-                android:textSize="@dimen/_12ssp"
+                android:textSize="@dimen/_18ssp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
                 />
 
             <TextView
@@ -58,7 +62,9 @@
                 android:fontFamily="@font/roboto_regular"
                 android:text="@string/text_description"
                 android:textColor="@color/font_black_color"
-                android:textSize="@dimen/_9ssp" />
+                android:textSize="@dimen/_14ssp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"/>
 
             <androidx.constraintlayout.widget.Group
                 android:id="@+id/group_content"
