@@ -24,7 +24,7 @@ interface StoryApiService {
     @GET("stories")
     suspend fun getListStory(): ListStoryResponse
 
-    @GET("stories/{storyId}")
+    @GET("stories/{id}")
     suspend fun getStoryId(@Path("id") id : String): StoryItem
 
     companion object {
