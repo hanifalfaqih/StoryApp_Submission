@@ -3,12 +3,14 @@ package id.allana.storyapp_submission.ui.detailstory
 import android.widget.Toast
 import androidx.core.view.isVisible
 import coil.load
+import dagger.hilt.android.AndroidEntryPoint
 import id.allana.storyapp_submission.base.arch.BaseActivity
 import id.allana.storyapp_submission.base.model.Resource
 import id.allana.storyapp_submission.data.network.model.response.story.StoryItem
 import id.allana.storyapp_submission.databinding.ActivityDetailStoryBinding
 import id.allana.storyapp_submission.util.StringUtil
 
+@AndroidEntryPoint
 class DetailStoryActivity : BaseActivity<ActivityDetailStoryBinding, DetailStoryViewModel>(
     ActivityDetailStoryBinding::inflate
 ), DetailStoryContract.View {
