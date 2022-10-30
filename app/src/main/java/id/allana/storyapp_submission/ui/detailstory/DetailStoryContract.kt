@@ -10,7 +10,7 @@ interface DetailStoryContract {
 
     interface ViewModel: BaseContract.BaseViewModel {
         fun getStoryId(): LiveData<String>
-        fun setIntentData(extras: Bundle)
+        fun setIntentData(extras: Bundle?)
         fun getStoryDetail(id: String)
         fun getStoryDetailResponse(): LiveData<Resource<StoryItem>>
     }

@@ -17,11 +17,10 @@ class DetailStoryViewModel
 @Inject constructor(private val repository: DetailStoryRepository): BaseViewModelImpl(), DetailStoryContract.ViewModel {
 
     private var detailStoryLiveData = MutableLiveData<Resource<StoryItem>>()
-
     private var detailStoryId = MutableLiveData<String>()
 
-    override fun setIntentData(extras: Bundle) {
-        detailStoryId.value = extras.getString(DetailStoryActivity.DETAIL_STORY_ID)
+    override fun setIntentData(extras: Bundle?) {
+        detailStoryId.value = extras?.getString(DetailStoryActivity.DETAIL_STORY_ID)
     }
 
     override fun getStoryId(): LiveData<String> = detailStoryId

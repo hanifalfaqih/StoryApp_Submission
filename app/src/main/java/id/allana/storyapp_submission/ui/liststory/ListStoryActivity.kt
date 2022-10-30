@@ -44,9 +44,12 @@ class ListStoryActivity : BaseActivity<ActivityListStoryBinding, ListStoryViewMo
     override fun initList() {
         adapter = ListStoryAdapter { data ->
             data.id?.let { id ->
-                navigateToDetail(id)
+                val intent = Intent(this, DetailStoryActivity::class.java)
+                intent.putExtra(DetailStoryActivity.DETAIL_STORY_ID, id)
+                startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle()   )
             }
         }
+
         getViewBinding().rvStory.apply {
             adapter = this@ListStoryActivity.adapter
             layoutManager = LinearLayoutManager(this@ListStoryActivity)
@@ -96,12 +99,6 @@ class ListStoryActivity : BaseActivity<ActivityListStoryBinding, ListStoryViewMo
 
     private fun setDataAdapter(data: List<StoryItem>) {
         adapter.setItems(data)
-    }
-
-    private fun navigateToDetail(id: String) {
-        val intent = Intent(this, DetailStoryActivity::class.java)
-        intent.putExtra("ID", id)
-        startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle()   )
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

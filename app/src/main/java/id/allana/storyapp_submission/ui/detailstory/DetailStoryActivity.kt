@@ -1,5 +1,6 @@
 package id.allana.storyapp_submission.ui.detailstory
 
+import android.os.Bundle
 import android.widget.Toast
 import androidx.core.view.isVisible
 import coil.load
@@ -19,34 +20,41 @@ class DetailStoryActivity : BaseActivity<ActivityDetailStoryBinding, DetailStory
         const val DETAIL_STORY_ID = "DETAIL_STORY_ID"
     }
 
-    override fun initView() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         getIntentData()
+    }
+
+    override fun initView() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = "Detail Story"
     }
 
     override fun getIntentData() {
-        intent.extras?.let { getViewModel().setIntentData(it) }
+        getViewModel().setIntentData(intent.extras)
     }
 
     override fun observeData() {
-        getViewModel().getStoryDetailResponse().observe(this) { resource ->
-            when (resource) {
+        getViewModel().getStoryDetailResponse().observe(this) {
+            when(it) {
                 is Resource.Loading -> {
                     showLoading(true)
-                    showError(false, null)
+                    showError(false)
                     showData(false)
                 }
                 is Resource.Success -> {
                     showLoading(false)
-                    showError(false, null)
+                    showError(false)
+                    it.data?.let { data ->
+                        setData(data)
+                        Toast.makeText(this, it.toString(), Toast.LENGTH_SHORT).show()
+                    }
                     showData(true)
-                    resource.data?.let { setData(it) }
                 }
                 is Resource.Error -> {
                     showLoading(false)
+                    showError(true, "Can't retrieve detail story")
                     showData(false)
-                    showError(true, "Can't retrieved detail story")
                 }
             }
         }
@@ -64,18 +72,14 @@ class DetailStoryActivity : BaseActivity<ActivityDetailStoryBinding, DetailStory
     }
 
     override fun setData(data: StoryItem) {
-        getViewBinding().ivStory.load(data.photoUrl) {
-            crossfade(true)
-        }
-
         val uploadDate = data.createdAt?.let { StringUtil.convertTimeData(it) }
+        getViewBinding().ivStory.load(data.photoUrl) { crossfade(true) }
         getViewBinding().tvUploadDate.text = uploadDate
-
         getViewBinding().tvUsername.text = data.name
         getViewBinding().tvDescription.text = data.description
     }
 
     override fun showError(isError: Boolean, msg: String?) {
-        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+        if (isError) Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
     }
 }
