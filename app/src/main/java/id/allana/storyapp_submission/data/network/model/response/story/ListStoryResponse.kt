@@ -1,6 +1,8 @@
 package id.allana.storyapp_submission.data.network.model.response.story
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
 data class ListStoryResponse(
 
@@ -14,6 +16,7 @@ data class ListStoryResponse(
 	val message: String
 )
 
+@Parcelize
 data class StoryItem(
 
 	@field:SerializedName("photoUrl")
@@ -36,4 +39,4 @@ data class StoryItem(
 
 	@field:SerializedName("lat")
 	val lat: Double? = null
-)
+): Parcelable

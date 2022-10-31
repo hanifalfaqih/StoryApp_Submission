@@ -43,11 +43,12 @@ class ListStoryActivity : BaseActivity<ActivityListStoryBinding, ListStoryViewMo
 
     override fun initList() {
         adapter = ListStoryAdapter { data ->
-            data.id?.let { id ->
-                val intent = Intent(this, DetailStoryActivity::class.java)
-                intent.putExtra(DetailStoryActivity.DETAIL_STORY_ID, id)
-                startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle()   )
-            }
+            val intent = Intent(this, DetailStoryActivity::class.java)
+            intent.putExtra(DetailStoryActivity.DETAIL_STORY, data)
+            startActivity(
+                intent,
+                ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle()
+            )
         }
 
         getViewBinding().rvStory.apply {
