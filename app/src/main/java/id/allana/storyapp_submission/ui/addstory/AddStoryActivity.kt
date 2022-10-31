@@ -26,7 +26,6 @@ import id.allana.storyapp_submission.util.Helper.uriToFile
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
-import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
 import java.io.File
@@ -70,7 +69,7 @@ class AddStoryActivity : BaseActivity<ActivityAddStoryBinding, AddStoryViewModel
             if (!allPermissionGranted()) {
                 Toast.makeText(
                     this,
-                    "Can't get permission",
+                    getString(R.string.text_msg_permission),
                     Toast.LENGTH_SHORT
                 ).show()
                 finish()
@@ -165,13 +164,13 @@ class AddStoryActivity : BaseActivity<ActivityAddStoryBinding, AddStoryViewModel
                 }
                 is Resource.Success -> {
                     showLoading(false)
-                    Toast.makeText(this, "Success upload photo", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.text_msg_success_add_story), Toast.LENGTH_SHORT).show()
                     navigateToHome()
 
                 }
                 is Resource.Error -> {
                     showLoading(false)
-                    showError(true, "Failed upload photo")
+                    showError(true, getString(R.string.text_msg_failed_add_story))
                 }
             }
         }

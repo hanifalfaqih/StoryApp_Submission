@@ -1,12 +1,11 @@
 package id.allana.storyapp_submission.ui.splashscreen
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
 import id.allana.storyapp_submission.base.arch.BaseActivity
-import id.allana.storyapp_submission.base.model.Resource
 import id.allana.storyapp_submission.databinding.ActivitySpashScreenBinding
 import id.allana.storyapp_submission.ui.liststory.ListStoryActivity
 import id.allana.storyapp_submission.ui.login.LoginActivity
@@ -14,6 +13,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
+@SuppressLint("CustomSplashScreen")
 @AndroidEntryPoint
 class SplashScreenActivity: BaseActivity<ActivitySpashScreenBinding, SplashScreenViewModel>(
     ActivitySpashScreenBinding::inflate
