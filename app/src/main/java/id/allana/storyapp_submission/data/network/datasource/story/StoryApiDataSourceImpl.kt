@@ -22,7 +22,4 @@ class StoryApiDataSourceImpl
         return storyApiService.getListStory()
     }
 
-    override suspend fun getStoryDetail(id: String): StoryItem {
-        return storyApiService.getStoryId(id)
-    }
 }

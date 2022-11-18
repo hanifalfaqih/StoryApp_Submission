@@ -6,6 +6,7 @@ import android.content.Intent
 import android.view.View
 import android.widget.Toast
 import dagger.hilt.android.AndroidEntryPoint
+import id.allana.storyapp_submission.R
 import id.allana.storyapp_submission.base.arch.BaseActivity
 import id.allana.storyapp_submission.base.model.Resource
 import id.allana.storyapp_submission.data.network.model.request.auth.AuthRequest
@@ -82,12 +83,12 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(
                 }
                 is Resource.Success -> {
                     showLoading(false)
-                    Toast.makeText(this, "Login success", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.text_msg_login_success), Toast.LENGTH_SHORT).show()
                     navigateToHome()
                 }
                 is Resource.Error -> {
                     showLoading(false)
-                    showError(true, "Login failed")
+                    showError(true, getString(R.string.text_msg_login_failed))
                 }
             }
         }

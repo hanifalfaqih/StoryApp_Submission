@@ -43,11 +43,12 @@ class ListStoryActivity : BaseActivity<ActivityListStoryBinding, ListStoryViewMo
 
     override fun initList() {
         adapter = ListStoryAdapter { data ->
-            data.id?.let { id ->
-                val intent = Intent(this, DetailStoryActivity::class.java)
-                intent.putExtra(DetailStoryActivity.DETAIL_STORY_ID, id)
-                startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle()   )
-            }
+            val intent = Intent(this, DetailStoryActivity::class.java)
+            intent.putExtra(DetailStoryActivity.DETAIL_STORY, data)
+            startActivity(
+                intent,
+                ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle()
+            )
         }
 
         getViewBinding().rvStory.apply {
@@ -117,13 +118,13 @@ class ListStoryActivity : BaseActivity<ActivityListStoryBinding, ListStoryViewMo
     private fun showDialogLogout() {
         MaterialAlertDialogBuilder(this)
             .apply {
-                setTitle("Logout")
-                setMessage("Do you want to logout?")
-                setPositiveButton("Yes") { dialog, _ ->
+                setTitle(getString(R.string.text_title_dialog))
+                setMessage(getString(R.string.text_message_dialog))
+                setPositiveButton(getString(R.string.text_positive_dialog)) { dialog, _ ->
                     logoutUser()
                     dialog.dismiss()
                 }
-                setNegativeButton("No") { dialog, _ ->
+                setNegativeButton(getString(R.string.text_negative_dialog)) { dialog, _ ->
                     dialog.dismiss()
                 }
             }.create().show()

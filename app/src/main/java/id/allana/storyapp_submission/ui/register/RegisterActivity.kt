@@ -3,16 +3,15 @@ package id.allana.storyapp_submission.ui.register
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.content.Intent
-import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import dagger.hilt.android.AndroidEntryPoint
+import id.allana.storyapp_submission.R
 import id.allana.storyapp_submission.base.arch.BaseActivity
 import id.allana.storyapp_submission.base.model.Resource
 import id.allana.storyapp_submission.data.network.model.request.auth.AuthRequest
 import id.allana.storyapp_submission.databinding.ActivityRegisterBinding
 import id.allana.storyapp_submission.ui.login.LoginActivity
-import id.allana.storyapp_submission.util.StringUtil
 
 @AndroidEntryPoint
 class RegisterActivity : BaseActivity<ActivityRegisterBinding, RegisterViewModel>(
@@ -73,12 +72,12 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding, RegisterViewModel
                 }
                 is Resource.Success -> {
                     showLoading(false)
-                    Toast.makeText(this, "Account successfully registered", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.text_msg_success_created_account), Toast.LENGTH_SHORT).show()
                     navigateToLogin()
                 }
                 is Resource.Error -> {
                     showLoading(false)
-                    showError(true, "Failed register account")
+                    showError(true, getString(R.string.text_msg_failed_created_account))
                 }
             }
         }

@@ -15,5 +15,4 @@ interface StoryApiDataSource {
 
     suspend fun getListStory(): ListStoryResponse
 
-    suspend fun getStoryDetail(id: String): StoryItem
 }

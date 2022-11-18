@@ -24,9 +24,6 @@ interface StoryApiService {
     @GET("stories")
     suspend fun getListStory(): ListStoryResponse
 
-    @GET("stories/{id}")
-    suspend fun getStoryId(@Path("id") id : String): StoryItem
-
     companion object {
 
         operator fun invoke(localDataSource: LocalDataSource, chuckerInterceptor: ChuckerInterceptor): StoryApiService {
